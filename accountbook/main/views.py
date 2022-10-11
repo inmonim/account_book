@@ -1,9 +1,6 @@
 from django.shortcuts import render, redirect
 
-
 # Create your views here.
-
-
 def index(request):
     log = str(request.user)
     if log == 'AnonymousUser':
@@ -11,8 +8,5 @@ def index(request):
 
     return render(request, 'main/index.html')
 
-def add(request):
-    return render(request, 'main/add.html')
-
-
-
+def consume(request):
+    return render(request, 'main/consume.html')

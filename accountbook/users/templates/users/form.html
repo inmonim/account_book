@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block title %}
@@ -12,10 +13,28 @@
   {% elif request.resolver_match.url_name == 'signup' %}
     <h1>Sign Up</h1>
   {% endif %}
-
+  
+  {% if request.resolver_match.url_name == 'login' %}
   <form action="{% url 'users:login' %}" method="POST">
+  {% elif request.resolver_match.url_name == 'signup' %}
+  <form action="{% url 'users:signup' %}" method="POST">
+  {% endif %}
+
     {% csrf_token %}
     {{ form }}
     <input type="submit">
   </form>
+
+  {% if request.resolver_match.url_name == 'login' %}
+  <a href="{% url 'users:signup' %}">sign up</a>
+  <hr>
+  <img src="{% static '쨍이.jpg' %}" alt="쨍이">
+  {% elif request.resolver_match.url_name == 'signup' %}
+  <a href="{% url 'users:login' %}">log in</a>
+  <hr>
+  <img src="{% static 'main/메건.jpg' %}" alt="나꼬">
+  <img src="{% static 'users/빵이.jpg' %}" alt="빵이">
+  <img src="{% static 'users/쨍이.jpg' %}" alt="쨍이">
+  {% endif %}
+
 {% endblock contents %}
