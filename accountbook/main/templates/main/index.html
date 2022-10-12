@@ -8,7 +8,29 @@
 
 <h1>INDEX</h1>
 
+{% for account in account_list %}
+
+  <p> {{ account.pk }} 번째 내역 </p>
+
+  <a href="{% url 'main:detail' account.pk %}"> {{ account.detail }} </a>
+  
+  <p> {{ account.date }} </p>
+  
+  {% if account.image %}
+  <img src="{{ account.image.url }}" alt="{{ account.detail }}">
+  {% endif %}
+
+  <hr>
+
+{% empty %}
+
+  <h1> 입력된 내역이 없습니다 </h1>
+
+{% endfor %}
+
 <a href={% url 'users:logout' %}>log out</a>
+
+<br>
 
 <a href={% url 'main:consume' %}>Consume init</a>
 

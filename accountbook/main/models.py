@@ -10,6 +10,7 @@ class Consume(models.Model):
     detail = models.CharField(max_length=20)
     DC = models.BooleanField(default=False)
     fixed_expenses = models.BooleanField(default=False)
+    image = models.ImageField(blank=True)
 
     def __str__(self):
         return self.detail

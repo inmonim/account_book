@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title> {{ account.pk }} 내역 </title>
+{% endblock title %}
+
+
+{% block contents %}
+
+<h1>detail PAGE</h1>
+
+<ul>
+  <li> {{ account.detail }} </li>
+  <li> {{ account.date }} </li>
+  <li> {{ account.main_category }} </li>
+  <li> {{ account.sub_category }} </li>
+</ul>
+
+{% if account.image %}
+  <img src="{{ account.image.url }}" alt="">
+{% endif %}
+
+
+{% endblock contents %}
